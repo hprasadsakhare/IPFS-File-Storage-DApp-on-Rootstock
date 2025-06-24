@@ -1,0 +1,9 @@
+{
+  "network": "rsktestnet",
+  "chainId": 31,
+  "contractAddress": "0xd59eA4AE7b8CC576c948953b87c4774177e0f9b5",
+  "deploymentHash": "0x6d1ad7d7beb2db96bd3fa877fda3e4dc5d095470e4a56ac450371aa314e319aa",
+  "deployer": "0xBceF717916DBED20393E8e3ca0b825967f01973F",
+  "gasUsed": "722270",
+  "timestamp": "2025-06-24T17:58:05.217Z"
+}

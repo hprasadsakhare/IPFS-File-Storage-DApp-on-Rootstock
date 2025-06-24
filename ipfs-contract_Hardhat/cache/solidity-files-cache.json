@@ -1,0 +1,75 @@
+{
+  "_format": "hh-sol-cache-2",
+  "files": {
+    "/Users/hprasad.sakhareicloud.com/Desktop/ipfs-contract/contracts/IPFSHashStorage.sol": {
+      "lastModificationDate": 1750787095829,
+      "contentHash": "97d2193b2fd64db08e4b0f0b2a6547de",
+      "sourceName": "contracts/IPFSHashStorage.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.19"
+      ],
+      "artifacts": [
+        "IPFSHashStorage"
+      ]
+    },
+    "/Users/hprasad.sakhareicloud.com/Desktop/ipfsstorage/ipfs-contract/contracts/IPFSHashStorage.sol": {
+      "lastModificationDate": 1750787736191,
+      "contentHash": "97d2193b2fd64db08e4b0f0b2a6547de",
+      "sourceName": "contracts/IPFSHashStorage.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.19"
+      ],
+      "artifacts": [
+        "IPFSHashStorage"
+      ]
+    }
+  }
+}
