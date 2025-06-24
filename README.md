@@ -2,69 +2,6 @@
 
 This project is a simple decentralized application (dApp) that allows you to upload files to the InterPlanetary File System (IPFS) and store the resulting IPFS hash on the Rootstock blockchain. It provides a user-friendly interface for uploading files, viewing the IPFS hash, and retrieving the hash from the smart contract.
 
-## Important Notes
-
-### Smart Contract Limitations
-The current implementation of the smart contract supports storing only a single IPFS hash at a time. This design choice was made for simplicity and demonstration purposes. For production use, you might want to extend the contract to support:
-- Multiple file hashes per user
-- Mapping of file names to hashes
-- Array of historical hashes
-- Batch upload capabilities
-
-Here's a quick example of how you could modify the contract to store multiple hashes:
-```solidity
-contract ExtendedIPFSHashStorage {
-    mapping(address => string[]) private userHashes;
-    
-    function addIPFSHash(string memory _ipfsHash) public {
-        userHashes[msg.sender].push(_ipfsHash);
-        emit HashAdded(msg.sender, _ipfsHash);
-    }
-    
-    function getUserHashes() public view returns (string[] memory) {
-        return userHashes[msg.sender];
-    }
-}
-```
-
-### Security Considerations
-The current contract uses the `onlyOwner` modifier, which means only the contract deployer can store hashes. This is a significant limitation for multi-user applications. Here are some ways to extend the contract for better access control:
-
-1. **Role-Based Access**: Implement OpenZeppelin's `AccessControl` for fine-grained permissions
-2. **Pay-Per-Store**: Allow any user to store hashes by paying a small fee
-3. **User Registration**: Add a registration system for approved users
-
-Example implementation with multiple access patterns:
-```solidity
-contract MultiUserIPFSStorage {
-    mapping(address => bool) public registeredUsers;
-    uint256 public storageFee;
-    
-    function registerUser(address user) public onlyOwner {
-        registeredUsers[user] = true;
-    }
-    
-    function storeHash(string memory _hash) public payable {
-        require(registeredUsers[msg.sender] || msg.value >= storageFee, 
-                "Must be registered or pay fee");
-        // Store hash logic here
-    }
-}
-```
-
-### Why Pinata SDK?
-This project uses the `pinata-web3` SDK for several reasons:
-1. **Reliability**: Pinata is a trusted IPFS pinning service that ensures your files remain accessible
-2. **Speed**: Dedicated IPFS nodes and gateways provide faster access to your files
-3. **Simple API**: The SDK provides an easy-to-use interface for file uploads and management
-4. **Gateway Services**: Pinata offers dedicated gateways for faster file retrieval
-
-To get started with Pinata:
-1. Create an account at [pinata.cloud](https://app.pinata.cloud)
-2. Generate an API Key in the API Keys section
-3. Copy the JWT token
-4. Add the token to your `.env` file as `REACT_APP_PINATA_JWT`
-
 ## Features
 
 *   **File Upload to IPFS**: Upload any file to IPFS via a simple drag-and-drop interface.
@@ -150,40 +87,6 @@ You can view the contract and its transactions on the [Rootstock Testnet Explore
 ### ABI (Application Binary Interface)
 
 The ABI is included in the `src/App.js` file and defines how the frontend interacts with the smart contract.
-
-## Smart Contract Deployment
-
-This project uses Hardhat for smart contract deployment. The contract can be deployed using either Hardhat (recommended) or Remix.
-
-### Deploying with Hardhat
-
-1. Install the dependencies:
-   ```bash
-   npm install
-   ```
-
-2. Create a `.env` file in the root directory with your private key:
-   ```
-   PRIVATE_KEY=your_wallet_private_key_here
-   ```
-   ⚠️ Never commit your private key or share it with anyone!
-
-3. Deploy to Rootstock Testnet:
-   ```bash
-   npm run deploy:testnet
-   ```
-
-   The script will output the contract address and transaction hash, along with links to view them on the RSK Explorer.
-
-### Deploying with Remix (Alternative)
-
-If you prefer using Remix:
-1. Copy the contract code from `contracts/IPFSHashStorage.sol`
-2. Paste it into Remix IDE
-3. Select "Injected Web3" as your environment
-4. Ensure your MetaMask is connected to Rootstock Testnet
-5. Deploy the contract
-6. Copy the deployed contract address and update it in `src/App.js`
 
 ## Deployment
 
