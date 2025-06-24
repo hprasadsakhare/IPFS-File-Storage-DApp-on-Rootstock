@@ -51,6 +51,7 @@ Before you begin, make sure you have the following installed:
     *   **Add your Pinata JWT**: Open the `.env` file and add your key like this:
         ```
         REACT_APP_PINATA_JWT="your_pinata_jwt_here"
+        REACT_APP_PINATA_GATEWAY="Pinata_Gateway"
         ```
         Replace `"your_pinata_jwt_here"` with the actual JWT you copied from Pinata.
 
